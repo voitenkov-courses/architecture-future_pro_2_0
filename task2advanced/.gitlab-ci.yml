@@ -1,0 +1,36 @@
+stages:
+   - modules
+
+variables:
+  TF_STATE_NAME: default
+  TF_CACHE_KEY: default
+   
+dev_env:
+   stage: modules
+   trigger:
+      include:
+         - local: "/.gitlab-ci/.dev.yml"
+      strategy: depend
+   only:
+      changes:
+         - /envs/dev/*
+
+stage_env:
+   stage: modules
+   trigger:
+      include:
+         - local: "/.gitlab-ci/.stage.yml"
+      strategy: depend
+   only:
+      changes:
+         - /envs/stage/*
+
+prod_env:
+   stage: modules
+   trigger:
+      include:
+         - local: "/.gitlab-ci/.prod.yml"
+      strategy: depend
+   only:
+      changes:
+         - /envs/prod/*         

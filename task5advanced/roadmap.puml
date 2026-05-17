@@ -1,0 +1,113 @@
+@startgantt roadmap
+title Роадмап внедрения Data Mesh «Будущее 2.0»
+
+printscale quarterly
+projectscale quarterly
+
+Project starts 2026-07-01
+
+-- Этап 1: Пилот (0–6 мес.) --
+
+[Развёртывание платформы\n(Kubernetes, Kafka, Schema Registry)] starts 2026-07-01 and ends 2026-08-01
+[Развёртывание платформы\n(Kubernetes, Kafka, Schema Registry)] is colored in #438DD5
+
+[Развёртывание и настройка DWH new\n(Greenplum)] starts 2026-08-01 and ends 2026-09-01
+[Развёртывание и настройка DWH new\n(Greenplum)] is colored in #438DD5
+
+[Развёртывание и настройка API Gateway\n(Kong)] starts 2026-09-01 and ends 2026-10-01
+[Развёртывание и настройка API Gateway\n(Kong)] is colored in #438DD5
+
+[Разработка CDC Service\n(Airflow)] starts 2026-09-01 and ends 2026-11-01
+[Разработка CDC Service\n(Airflow)] is colored in #438DD5
+
+[Развёртывание и настройка IAM\n(Keycloak)] starts 2026-10-01 and ends 2026-11-01
+[Развёртывание и настройка IAM\n(Keycloak)] is colored in #438DD5
+
+[Разработка: Integration Service] starts 2026-07-01 and ends 2026-09-01
+[Разработка: Integration Service] is colored in #2E8B57
+
+[Разработка: Веб-приложения] starts 2026-09-01 and ends 2026-11-01
+[Разработка: Веб-приложения] is colored in #2E8B57
+
+[Разработка: Client Service] starts 2026-07-01 and ends 2026-11-01
+[Разработка: Client Service] is colored in #2E8B57
+
+[Пилот: Integration Service] starts 2026-11-01 and ends 2027-01-01
+[Пилот: Integration Service] is colored in #CC4444
+
+[Пилот: Client Service] starts 2026-11-01 and ends 2027-01-01
+[Пилот: Client Service] is colored in #CC4444
+
+[Пилот: CDC Service] starts 2026-11-01 and ends 2027-01-01
+[Пилот: CDC Service] is colored in #CC4444
+
+[Пилот: Веб-приложение] starts 2026-11-01 and ends 2027-01-01
+[Пилот: Веб-приложение] is colored in #CC4444
+-- Этап 2: Расширение трансформации (6–18 мес.) --
+[Пилотные сервисы работают в GA\n Client, Integration, CDC, Веб] starts 2027-01-01 and ends 2029-07-01
+[Пилотные сервисы работают в GA\n Client, Integration, CDC, Веб] is colored in #BA55D3
+
+[Вывод legacy services\nPowerbuilder] starts 2027-01-01 and ends 2027-02-01
+[Вывод legacy services\nPowerbuilder] is colored in #000000
+
+[Разработка: Self-service Portal] starts 2026-11-01 and ends 2027-07-01
+[Разработка: Self-service Portal] is colored in #2E8B57
+
+[Разработка: ACL Service] starts 2026-11-01 and ends 2027-01-01
+[Разработка: ACL Service] is colored in #2E8B57
+
+[Разработка: Fintech Service] starts 2027-01-01 and ends 2027-10-01
+[Разработка: Fintech Service] is colored in #2E8B57
+
+[Пилот: Self-service Portal] starts 2027-07-01 and ends 2028-01-01
+[Пилот: Self-service Portal] is colored in #CC4444
+
+[Пилот: Fintech Service] starts 2027-10-01 and ends 2028-01-01
+[Пилот: Fintech Service] is colored in #CC4444
+
+-- Этап 3: Завершение трансформации (18–36 мес.) --
+[Пилотные сервисы работают в GA\n Self-service Portal, Fintech services] starts 2028-01-01 and ends 2029-07-01
+[Пилотные сервисы работают в GA\n Self-service Portal, Fintech services] is colored in #BA55D3
+
+[Вывод legacy services\nPower BI] starts 2028-01-01 and ends 2028-02-01
+[Вывод legacy services\nPower BI] is colored in #000000
+
+[Разработка: Client Portal] starts 2027-10-01 and ends 2029-01-01
+[Разработка: Client Portal] is colored in #2E8B57
+
+[Переключение AI-сервисов на Event Bus] starts 2028-01-01 and ends 2028-03-01
+[Переключение AI-сервисов на Event Bus] is colored in #2E8B57
+
+[Пилот: AI-sevices на Event Bus] starts 2028-03-01 and ends 2028-06-01
+[Пилот: AI-sevices на Event Bus] is colored in #CC4444
+
+[AI-sevices на Event Bus работают в GA] starts 2028-06-01 and ends 2029-07-01
+[AI-sevices на Event Bus работают в GA] is colored in #BA55D3
+
+[Переключение Internal Services на Event Bus] starts 2028-03-01 and ends 2028-06-01
+[Переключение Internal Services на Event Bus] is colored in #2E8B57
+
+[Пилот: Internal Services на Event Bus] starts 2028-06-01 and ends 2028-09-01
+[Пилот: Internal Services на Event Bus] is colored in #CC4444
+
+[Internal Services на Event Bus работают в GA] starts 2028-09-01 and ends 2029-07-01
+[Internal Services на Event Bus работают в GA] is colored in #BA55D3
+
+[Переход на потоковую аналитику] starts 2028-09-01 and ends 2029-07-01
+[Переход на потоковую аналитику] is colored in #438DD5
+
+[Вывод legacy services\nApache Camel ESB, ACL Service, MS SQL Server] starts 2028-12-01 and ends 2029-01-01
+[Вывод legacy services\nApache Camel ESB, ACL Service, MS SQL Server] is colored in #000000
+
+[Выход на новые регионы] starts 2029-01-01 and ends 2029-07-01
+[Выход на новые регионы] is colored in #438DD5
+
+[Увеличение количества источников] starts 2029-01-01 and ends 2029-07-01
+[Увеличение количества источников] is colored in #438DD5
+
+[Пилот: Client Portal] starts 2029-01-01 and ends 2029-04-01
+[Пилот: Client Portal] is colored in #CC4444
+
+[Client Portal работают в GA] starts 2029-04-01 and ends 2029-07-01
+[Client Portal работают в GA] is colored in #BA55D3
+@endgantt
