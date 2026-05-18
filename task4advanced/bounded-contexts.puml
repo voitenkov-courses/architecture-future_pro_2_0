@@ -1,0 +1,66 @@
+@startuml
+title Future 2.0 Context Map Diagram
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+System(PatientsDomain, "Домен обслуживания пациентов", "")
+System(PatientRegistration, "Регистрация пациента", "")
+System(PatientMedicalCard, "Ведение медкарты пациента", "")
+System(PatientAppointment, "Запись пациента на прием", "")
+System(PatientDiagnosis, "Постановка диагноза", "")
+System(PatientPrescription, "Назначение лечения", "")
+System(PatientTest, "Направление на анализы", "")
+Rel(PatientsDomain, PatientRegistration, "Пациенты регистрируются через")
+Rel(PatientsDomain, PatientMedicalCard, "Карточки пациентов оформляются через")
+Rel(PatientsDomain, PatientAppointment, "Пациентов записывают на прием через")
+Rel(PatientsDomain, PatientDiagnosis, "Пациентам ставят диагноз через")
+Rel(PatientsDomain, PatientPrescription, "Пациентам назначают лечение через")
+Rel(PatientsDomain, PatientTest, "Направление на анализы оформляются через")
+Rel(PatientRegistration, PatientMedicalCard, "Медкарта оформляется для зарегистрированных пациентов")
+Rel(PatientMedicalCard, PatientAppointment, "На прием записываются пациенты с медкартой")
+Rel(PatientAppointment, PatientDiagnosis, "Диагноз ставят пациентам, записанным на прием")
+Rel(PatientDiagnosis, PatientPrescription, "Лечение назначают пациентам с поставленным диагнозом")
+Rel(PatientAppointment, PatientTest, "Анализы назначают пациентам, записанным на прием")
+Rel(PatientTest, PatientDiagnosis, "Диагноз ставят пациентам с результатами анализов (если были назначены)")
+
+System(PatientsSelfServiceDomain, "Домен самообслуживания пациентов", "")
+System(AIServices, "Постановка предварительного диагноза при помощи ИИ", "")
+Rel(PatientsSelfServiceDomain, AIServices, "Предварительный диагноз ставится через")
+Rel(PatientRegistration, AIServices, "Предварительный диагноз ставится для зарегистрированных пациентов")
+
+System(DataAnalyticsDomain, "Домен аналитики данных", "")
+System(DataAnalyticsManagement, "Управление аналитическими витринами", "")
+Rel(DataAnalyticsDomain, DataAnalyticsManagement, "Аналитические витрины управляются через")
+Rel(PatientRegistration, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(PatientAppointment, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(PatientDiagnosis, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(PatientPrescription, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(PatientTest, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(DataAnalyticsManagement, AIServices, "ИИ сервисы используют аналитические данные")
+
+System(ServiceIntegrationDomain, "Домен интеграции сервисов", "")
+System(ServiceIntegration, "Управление интеграциями сервисов", "")
+Rel(ServiceIntegrationDomain, ServiceIntegration, "Интеграции доменных сервисов настраиваются через")
+Rel(ServiceIntegration, DataAnalyticsManagement, "Витрины данных создаются для доменов, для которых настроена интеграция")
+
+System(FinanceDomain, "Домен финансовых операций", "")
+System(PaymentManagement, "Управление оплатами услуг", "")
+System(CreditManagement, "Управление оформлением кредитов", "")
+Rel(FinanceDomain, PaymentManagement, "Оплата медицинских услуг выполняется через")
+Rel(FinanceDomain, CreditManagement, "Кредиты оформляются через")
+Rel(PatientAppointment, PaymentManagement, "Прием врача должен быть оформлен как услуга и оплачен")
+Rel(PaymentManagement, CreditManagement, "Оплата услуги может быть оформлена как кредит")
+Rel(PaymentManagement, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(CreditManagement, DataAnalyticsManagement, "Используется в качестве источника данных")
+
+System(InternalOperations, "Домен внутренних операций", "")
+System(FinanceManagement, "Управление финансами", "")
+System(ClinicManagement, "Управление клиниками", "")
+Rel(InternalOperations, FinanceManagement, "Финанансовые операции компании оформляются через")
+Rel(InternalOperations, ClinicManagement, "Клиники управляются через")
+Rel(FinanceManagement, DataAnalyticsManagement, "Используется в качестве источника данных")
+Rel(ClinicManagement, DataAnalyticsManagement, "Используется в качестве источника данных")
+
+@enduml
